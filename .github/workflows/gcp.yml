@@ -16,7 +16,7 @@ jobs:
 
     - uses: google-github-actions/setup-gcloud@v1
       with:
-        SERVICE_ACCOUNT_KEY_JSON: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         project_id: ${{ env.PROJECT_ID }}
         export_default_credentials: true
         
