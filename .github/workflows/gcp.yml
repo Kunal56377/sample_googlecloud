@@ -12,14 +12,12 @@ jobs:
       PROJECT_ID: prime-apricot-396310
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - uses: google-github-actions/setup-gcloud@v1
+    - uses: google-github-actions/auth@v0.4.0
       with:
-        service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         project_id: ${{ env.PROJECT_ID }}
-        export_default_credentials: true
-        
 
     - name: Build Docker Image
       run: docker build -t $IMAGE_NAME:latest .
