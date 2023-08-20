@@ -43,3 +43,14 @@ jobs:
         docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+    
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+    
+    - name: Deploy to Google VM
+      run: |
+        # Pull container image from the registry
+        docker pull gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+
+        # Run the container on the VM
+        ssh -i ${{ secrets.SERVICE_ACCOUNT_KEY }} kunalmnugalkhod007@34.132.8.167 "docker run -d -p 80:80 gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
