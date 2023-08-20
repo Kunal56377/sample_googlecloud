@@ -54,5 +54,5 @@ jobs:
         docker pull gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
 
         # Run the container on the VM
-        echo ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        echo "${{ secrets.SERVICE_ACCOUNT_KEY }}"
         ssh -i ${{ secrets.SERVICE_ACCOUNT_KEY }} kunalmnugalkhod007@34.132.8.167 "docker run -d -p 80:80 gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
