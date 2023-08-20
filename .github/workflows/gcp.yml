@@ -57,4 +57,4 @@ jobs:
     - name: 'SSH into VM'
       run: |-
         echo y | gcloud compute ssh kunalmnugalkhod007@instance-1 --project=prime-apricot-396310 --zone=us-central1-a --ssh-key-file=./ssh/id_rsa.pub --command "docker pull gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
-        echo y | gcloud compute ssh kunalmnugalkhod007@instance-1 --project=prime-apricot-396310 --zone=us-central1-a --ssh-key-file=./ssh/id_rsa.pub --command "docker run -p 8080:8080 gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
+        echo y | gcloud compute ssh kunalmnugalkhod007@instance-1 --project=prime-apricot-396310 --zone=us-central1-a --ssh-key-file=./ssh/id_rsa.pub --command "docker run -p 8080:5050 gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
