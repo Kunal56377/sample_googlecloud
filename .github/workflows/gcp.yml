@@ -49,6 +49,7 @@ jobs:
         instance_name: instance-1
         zone: us-central1-a
         ssh_private_key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+        ssh_args: -vvv -L 80:%INSTANCE%:80
         command: |- 
           docker pull gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
           sudo docker run -p 8080:8080 gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
