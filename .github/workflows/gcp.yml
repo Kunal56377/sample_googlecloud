@@ -43,10 +43,16 @@ jobs:
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
 
     - name: Set up SSH key
-      run: |-
-        bash mkdir ssh
-        bash echo ${{ secrets.GCP_SSH_PRIVATE_KEY }}> ./ssh/id_rsa
-        bash chmod 600 ./ssh/id_rsa
+      run: mkdir ssh
+    
+    - name: coping key
+      run: mkdir ssh
+
+    - name: Set up SSH key
+      run: echo ${{ secrets.GCP_SSH_PRIVATE_KEY }}> ./ssh/id_rsa
+    
+    - name: Giving read access 
+      run: chmod 600 ./ssh/id_rsa
     
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
