@@ -21,7 +21,7 @@ jobs:
       run: echo "${{ secrets.GCP_SSH_PRIVATE_KEY }}"> ./ssh/id_rsa.pub
     
     - name: Giving read access 
-      run: chmod 600 ./ssh/id_rsa
+      run: chmod 600 ./ssh/id_rsa.pub
 
     - uses: google-github-actions/auth@v0.4.0
       with:
