@@ -16,9 +16,6 @@ jobs:
     
     - name: Set up SSH key
       run: mkdir ssh
-    
-    - name: coping key
-      run: mkdir ssh
 
     - name: Set up SSH key
       run: echo ${{ secrets.GCP_SSH_PRIVATE_KEY }}> ./ssh/id_rsa
