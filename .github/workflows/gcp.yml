@@ -44,10 +44,13 @@ jobs:
     
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v1'
+        with:
+          credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          project_id: ${{ env.PROJECT_ID }}
     
     - name: Deploy to Google VM
-      run: |
-        # Pull container image from the registry
+      run: |-
+        #Pull container image from the registry
         docker pull gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
 
         # Run the container on the VM
